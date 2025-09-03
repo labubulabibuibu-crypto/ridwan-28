@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Es Teh Poci 𝖜𝖆𝖜𝖜 – Form Interaktif</title>
+  <meta name="description" content="Form pemesanan, feedback nostalgia, membership Sobat Poci, dan kuis Teko Keberuntungan." />
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            poci: {
+              orange: '#ff7a1a',
+              brown: '#7a4a28',
+              cream: '#fff6ea',
+              leaf: '#2ecc71'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,.08)'
+          },
+          animation: {
+            pop: 'pop .25s ease-out',
+          },
+          keyframes: {
+            pop: {
+              '0%': { transform: 'scale(.96)', opacity: .6 },
+              '100%': { transform: 'scale(1)', opacity: 1 }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html{scroll-behavior:smooth}
+    .star{cursor:pointer}
+  </style>
+</head>
+<body class="bg-gradient-to-b from-poci-cream to-white text-slate-800">
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 font-semibold tracking-wide"><span class="w-8 h-8 rounded-lg bg-poci-orange text-white grid place-items-center">🫖</span> Es Teh Poci</a>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="#pemesanan" class="hover:text-poci-brown">Pemesanan</a>
+        <a href="#feedback" class="hover:text-poci-brown">Feedback</a>
+        <a href="#membership" class="hover:text-poci-brown">Sobat Poci</a>
+        <a href="#kuis" class="hover:text-poci-brown">Kuis</a>
+      </nav>
+      <a href="#pemesanan" class="hidden md:inline-block px-4 py-2 rounded-xl bg-poci-orange text-white hover:opacity-90">Pesan Sekarang</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 py-14 grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <p class="text-xs uppercase tracking-widest text-poci-brown/80">Tradisional • Kekinian • Nikmat</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mt-2">Form Interaktif <span class="text-poci-orange">Es Teh Poci</span></h1>
+        <p class="mt-4 text-slate-600">Pilih gayamu: teko <em>(poci)</em> klasik atau cup modern. Tinggalkan kesan, gabung komunitas, dan ikuti kuis berhadiah!</p>
+        <div class="mt-6 flex gap-3">
+          <a href="#pemesanan" class="px-5 py-3 rounded-2xl bg-poci-brown text-white shadow-soft">Mulai Pesan</a>
+          <a href="#kuis" class="px-5 py-3 rounded-2xl border border-poci-brown/30">Ikuti Kuis</a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="aspect-[3/4] w-full max-w-sm mx-auto rounded-[28px] bg-gradient-to-b from-amber-200 to-amber-300 shadow-soft p-4">
+          <div class="h-full rounded-[22px] bg-gradient-to-b from-orange-200 via-amber-300 to-amber-400 relative overflow-hidden">
+            <div class="absolute -left-8 -top-8 w-28 h-28 bg-white/50 rotate-12 rounded"></div>
+            <div class="absolute right-6 top-8 bg-white/80 text-poci-brown text-xs px-2 py-1 rounded">Poci Mode</div>
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-poci-brown/80">Seger pol! 🧊</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABS CONTAINER -->
+  <main class="max-w-6xl mx-auto px-4 pb-20">
+    <div class="grid md:grid-cols-4 gap-4 sticky top-16 bg-white/70 backdrop-blur p-2 rounded-2xl border shadow-soft z-40">
+      <button data-tab="pemesanan" class="tabBtn px-3 py-2 rounded-xl bg-poci-orange text-white">Pemesanan</button>
+      <button data-tab="feedback" class="tabBtn px-3 py-2 rounded-xl">Feedback Nostalgia</button>
+      <button data-tab="membership" class="tabBtn px-3 py-2 rounded-xl">Sobat Poci</button>
+      <button data-tab="kuis" class="tabBtn px-3 py-2 rounded-xl">Teko Keberuntungan</button>
+    </div>
+
+    <!-- 1) FORM PEMESANAN -->
+    <section id="pemesanan" class="tab mt-8">
+      <div class="bg-white rounded-3xl p-6 md:p-8 shadow-soft border">
+        <h2 class="text-2xl font-bold mb-1">Form Pemesanan</h2>
+        <p class="text-slate-600 mb-6">Pilih menu dan gaya penyajian favoritmu.</p>
+        <form id="formOrder" class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-semibold">Nama Lengkap</label>
+              <input required name="nama" type="text" class="mt-1 w-full px-4 py-3 rounded-xl border" placeholder="Mis. Budi Santoso" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold">Nomor WhatsApp</label>
+              <input required name="wa" type="tel" class="mt-1 w-full px-4 py-3 rounded-xl border" placeholder="62xxxxxxxxxxx" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold">Menu</label>
+              <select name="menu" class="mt-1 w-full px-4 py-3 rounded-xl border">
+                <option>Teh Poci Original</option>
+                <option>Teh Poci Lemon</option>
+              </select>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-semibold">Cara Penyajian</label>
+              <div class="mt-2 grid grid-cols-2 gap-2">
+                <label class="border rounded-xl px-4 py-3 flex items-center gap-2">
+                  <input type="radio" name="penyajian" value="Poci (teko)" checked>
+                  <span>🫖 Poci (teko)</span>
+                </label>
+                <label class="border rounded-xl px-4 py-3 flex items-center gap-2">
+                  <input type="radio" name="penyajian" value="Cup modern">
+                  <span>🥤 Cup modern</span>
+                </label>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-sm font-semibold">Level Gula</label>
+                <select name="gula" class="mt-1 w-full px-4 py-3 rounded-xl border">
+                  <option>Tanpa</option>
+                  <option>Sedikit</option>
+                  <option selected>Normal</option>
+                  <option>Manis banget</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold">Level Es</label>
+                <select name="es" class="mt-1 w-full px-4 py-3 rounded-xl border">
+                  <option>Tanpa</option>
+                  <option>Sedikit</option>
+                  <option selected>Normal</option>
+                  <option>Banyak</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold">Catatan Tambahan</label>
+              <textarea name="catatan" rows="3" class="mt-1 w-full px-4 py-3 rounded-xl border" placeholder="Mis. tanpa es, less sugar, tambah jeruk nipis..."></textarea>
+            </div>
+          </div>
+          <div class="md:col-span-2 flex flex-wrap gap-3 items-center">
+            <button class="px-5 py-3 rounded-2xl bg-poci-orange text-white hover:opacity-90" type="submit">Kirim Pesanan</button>
+            <button id="btnWA" class="px-5 py-3 rounded-2xl border hover:bg-slate-50" type="button">Kirim via WhatsApp</button>
+            <p class="text-sm text-slate-500">*WA default: ganti nomor admin di skrip</p>
+          </div>
+        </form>
+        <div id="orderResult" class="mt-6 hidden p-4 rounded-xl bg-green-50 border text-sm"></div>
+      </div>
+    </section>
+
+    <!-- 2) FORM FEEDBACK -->
+    <section id="feedback" class="tab mt-8 hidden">
+      <div class="bg-white rounded-3xl p-6 md:p-8 shadow-soft border">
+        <h2 class="text-2xl font-bold mb-1">Feedback Nostalgia</h2>
+        <p class="text-slate-600 mb-6">Cerita singkatmu sangat berarti untuk kami.</p>
+        <form id="formFeedback" class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-semibold">Nama / Inisial</label>
+              <input required name="nama" type="text" class="mt-1 w-full px-4 py-3 rounded-xl border" placeholder="Mis. Aulia / A*" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-1">Rating</label>
+              <div class="flex items-center gap-1" id="ratingStars" aria-label="Rating 1 sampai 5">
+                <button type="button" class="star text-2xl" data-val="1">☆</button>
+                <button type="button" class="star text-2xl" data-val="2">☆</button>
+                <button type="button" class="star text-2xl" data-val="3">☆</button>
+                <button type="button" class="star text-2xl" data-val="4">☆</button>
+                <button type="button" class="star text-2xl" data-val="5">☆</button>
+                <input type="hidden" name="rating" value="0" />
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-semibold">Kapan terakhir minum Es Teh Poci bareng keluarga/teman?</label>
+              <input name="kapan" type="text" class="mt-1 w-full px-4 py-3 rounded-xl border" placeholder="Mis. Lebaran kemarin di rumah nenek" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold">Satu kata untuk Es Teh Poci?</label>
+              <input name="satu_kata" type="text" class="mt-1 w-full px-4 py-3 rounded-xl border" placeholder="Mis. Nostalgia" />
+            </div>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-semibold">Pesan / Saran</label>
+            <textarea name="pesan" rows="3" class="mt-1 w-full px-4 py-3 rounded-xl border" placeholder="Tulis kesanmu di sini..."></textarea>
+          </div>
+          <div class="md:col-span-2 flex gap-3 items-center">
+            <button class="px-5 py-3 rounded-2xl bg-poci-brown text-white" type="submit">Kirim Feedback</button>
+            <span class="text-sm text-slate-500">Terima kasih sudah berbagi cerita 💛</span>
+          </div>
+        </form>
+        <div id="feedbackResult" class="mt-6 hidden p-4 rounded-xl bg-green-50 border text-sm"></div>
+      </div>
+    </section>
+
+    <!-- 3) FORM MEMBERSHIP -->
+    <section id="membership" class="tab mt-8 hidden">
+      <div class="bg-white rounded-3xl p-6 md:p-8 shadow-soft border">
+        <h2 class="text-2xl font-bold mb-1">Komunitas “Sobat Poci”</h2>
+        <p class="text-slate-600 mb-6">Dapatkan info event & promo eksklusif.</p>
+        <form id="formMember" class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-semibold">Nama Lengkap</label>
+              <input required name="nama" type="text" class="mt-1 w-full px-4 py-3 rounded-xl border" placeholder="Mis. Intan" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold">Email / WA</label>
+              <input required name="kontak" type="text" class="mt-1 w-full px-4 py-3 rounded-xl border" placeholder="email@contoh.com / 62xxxxxxxxxxx" />
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-semibold">Kota Domisili</label>
+              <input name="kota" type="text" class="mt-1 w-full px-4 py-3 rounded-xl border" placeholder="Mis. Semarang" />
+            </div>
+            <div class="flex items-center gap-2 mt-2">
+              <input id="promo" type="checkbox" name="promo" class="scale-110">
+              <label for="promo" class="text-sm">Saya ingin ikut event & promo Sobat Poci</label>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold">Preferensi</label>
+              <div class="mt-2 grid grid-cols-2 gap-2">
+                <label class="border rounded-xl px-4 py-3 flex items-center gap-2">
+                  <input type="radio" name="preferensi" value="Minum di tempat" checked>
+                  <span>Minum di tempat</span>
+                </label>
+                <label class="border rounded-xl px-4 py-3 flex items-center gap-2">
+                  <input type="radio" name="preferensi" value="Take away / online">
+                  <span>Take away / online</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="md:col-span-2 flex gap-3 items-center">
+            <button class="px-5 py-3 rounded-2xl bg-poci-leaf text-white" type="submit">Daftar Sobat Poci</button>
+            <span class="text-sm text-slate-500">Kami akan menyimpan datamu dengan aman.</span>
+          </div>
+        </form>
+        <div id="memberResult" class="mt-6 hidden p-4 rounded-xl bg-green-50 border text-sm"></div>
+      </div>
+    </section>
+
+    <!-- 4) FORM KUIS / GIVEAWAY -->
+    <section id="kuis" class="tab mt-8 hidden">
+      <div class="bg-white rounded-3xl p-6 md:p-8 shadow-soft border">
+        <h2 class="text-2xl font-bold mb-1">Kuis “Teko Keberuntungan”</h2>
+        <p class="text-slate-600 mb-6">Jawab singkat & upload fotomu bareng Es Teh Poci (opsional).</p>
+        <form id="formKuis" class="grid md:grid-cols-2 gap-6" enctype="multipart/form-data">
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-semibold">Nama</label>
+              <input required name="nama" type="text" class="mt-1 w-full px-4 py-3 rounded-xl border" placeholder="Namamu" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold">Email / WA</label>
+              <input required name="kontak" type="text" class="mt-1 w-full px-4 py-3 rounded-xl border" placeholder="email@contoh.com / 62xxxxxxxxxxx" />
+            </div>
+            <div>
+              <label class="block text-sm font-semibold">Pertanyaan</label>
+              <input name="jawaban" type="text" class="mt-1 w-full px-4 py-3 rounded-xl border" placeholder="Kalau punya teko ajaib, mau rasa apa?" />
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-semibold">Upload Foto (opsional)</label>
+              <input id="foto" name="foto" type="file" accept="image/*" class="mt-1 w-full px-4 py-3 rounded-xl border bg-white" />
+              <div id="preview" class="mt-3 hidden">
+                <img alt="Preview" class="max-h-48 rounded-xl border" />
+              </div>
+            </div>
+          </div>
+          <div class="md:col-span-2 flex gap-3 items-center">
+            <button class="px-5 py-3 rounded-2xl bg-poci-orange text-white" type="submit">Kirim Jawaban</button>
+            <span class="text-sm text-slate-500">Semoga beruntung! wkwk</span>
+          </div>
+        </form>
+        <div id="kuisResult" class="mt-6 hidden p-4 rounded-xl bg-green-50 border text-sm"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-10 text-center text-sm text-slate-500">© <span id="year"></span> Es Teh Poci 𝖜𝖆𝖜𝖜</footer>
+
+  <script>
+    // ===== Tabs =====
+    const tabs = document.querySelectorAll('.tab');
+    const tabBtns = document.querySelectorAll('.tabBtn');
+    tabBtns.forEach(btn=> btn.addEventListener('click', ()=>{
+      tabBtns.forEach(b=> b.classList.remove('bg-poci-orange','text-white'));
+      btn.classList.add('bg-poci-orange','text-white');
+      const id = btn.dataset.tab;
+      tabs.forEach(t => t.id === id ? t.classList.remove('hidden') : t.classList.add('hidden'));
+      document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+    }));
+
+    // ===== Utility: toast =====
+    function toast(msg, ok=true){
+      const el = document.createElement('div');
+      el.className = `fixed left-1/2 -translate-x-1/2 top-20 px-4 py-2 rounded-xl shadow-soft border animate-pop ${ok? 'bg-green-50 border-green-200':'bg-red-50 border-red-200'}`;
+      el.textContent = msg;
+      document.body.appendChild(el);
+      setTimeout(()=> el.remove(), 2200);
+    }
+
+    // ===== 1) Pemesanan =====
+    const formOrder = document.getElementById('formOrder');
+    const orderResult = document.getElementById('orderResult');
+    const btnWA = document.getElementById('btnWA');
+
+    function serializeForm(form){
+      const data = new FormData(form);
+      return Object.fromEntries(data.entries());
+    }
+
+    formOrder.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const v = serializeForm(formOrder);
+      orderResult.classList.remove('hidden');
+      orderResult.innerHTML = `<b>Terima kasih, ${v.nama}!</b><br>Pesananmu: <i>${v.menu}</i> (${v.penyajian}), gula: ${v.gula}, es: ${v.es}.<br>Catatan: ${v.catatan || '-'}<br>Kami akan menghubungi WA: ${v.wa}.`;
+      toast('Pesanan terkirim.');
+      formOrder.reset();
+    });
+
+    btnWA.addEventListener('click', ()=>{
+      const v = serializeForm(formOrder);
+      if(!v.nama || !v.wa){ toast('Isi Nama & WA dulu ya', false); return; }
+      const admin = '6281234567890'; // GANTI ke nomor admin
+      const text = encodeURIComponent(
+        `Halo Admin Es Teh Poci!%0A%0APesan:%0A- Menu: ${v.menu || 'Teh Poci Original'}%0A- Penyajian: ${v.penyajian || 'Poci (teko)'}%0A- Gula: ${v.gula || 'Normal'}%0A- Es: ${v.es || 'Normal'}%0A- Catatan: ${v.catatan || '-'}%0A%0APemesan:%0A- Nama: ${v.nama}%0A- WA: ${v.wa}`
+      );
+      const url = `https://wa.me/${admin}?text=${text}`;
+      window.open(url, '_blank');
+    });
+
+    // ===== 2) Feedback (rating bintang) =====
+    const stars = document.querySelectorAll('#ratingStars .star');
+    const ratingInput = document.querySelector('#ratingStars + input[name="rating"], #ratingStars input[name="rating"]') || document.querySelector('input[name="rating"]');
+    let selected = 0;
+    function renderStars(n){
+      stars.forEach((s, i)=> s.textContent = (i < n) ? '★' : '☆');
+    }
+    stars.forEach(st => st.addEventListener('click', ()=>{
+      selected = parseInt(st.dataset.val);
+      ratingInput.value = selected;
+      renderStars(selected);
+    }));
+
+    const formFeedback = document.getElementById('formFeedback');
+    const feedbackResult = document.getElementById('feedbackResult');
+    formFeedback.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const v = serializeForm(formFeedback);
+      if(parseInt(v.rating||'0')===0){ toast('Pilih rating dulu ya', false); return; }
+      feedbackResult.classList.remove('hidden');
+      feedbackResult.innerHTML = `Terima kasih, <b>${v.nama}</b>! Rating: <b>${v.rating}/5</b>.<br>`+
+        `Terakhir minum: ${v.kapan || '-'} • Satu kata: <i>${v.satu_kata || '-'}</i><br>`+
+        `Pesan: ${v.pesan || '-'}`;
+      toast('Feedback tersimpan.');
+      formFeedback.reset();
+      selected = 0; renderStars(0);
+    });
+
+    // ===== 3) Membership =====
+    const formMember = document.getElementById('formMember');
+    const memberResult = document.getElementById('memberResult');
+    formMember.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const v = serializeForm(formMember);
+      const ikutPromo = v.promo ? 'Ya' : 'Tidak';
+      memberResult.classList.remove('hidden');
+      memberResult.innerHTML = `Selamat bergabung, <b>${v.nama}</b>!<br>`+
+        `Kontak: ${v.kontak} • Kota: ${v.kota || '-'} • Preferensi: ${v.preferensi || '-'} • Promo: ${ikutPromo}`;
+      toast('Pendaftaran berhasil.');
+      formMember.reset();
+    });
+
+    // ===== 4) Kuis + preview foto =====
+    const formKuis = document.getElementById('formKuis');
+    const kuisResult = document.getElementById('kuisResult');
+    const fotoInput = document.getElementById('foto');
+    const preview = document.getElementById('preview');
+    const previewImg = preview.querySelector('img');
+
+    fotoInput.addEventListener('change', ()=>{
+      const file = fotoInput.files?.[0];
+      if(file){
+        const url = URL.createObjectURL(file);
+        previewImg.src = url;
+        preview.classList.remove('hidden');
+      } else {
+        preview.classList.add('hidden');
+      }
+    });
+
+    formKuis.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const v = serializeForm(formKuis);
+      kuisResult.classList.remove('hidden');
+      kuisResult.innerHTML = `Terima kasih, <b>${v.nama}</b>! Jawabanmu: <i>${v.jawaban || '-'}</i>. Kami akan menghubungimu via ${v.kontak}.`;
+      toast('Jawaban terkirim.');
+      formKuis.reset();
+      preview.classList.add('hidden');
+    });
+
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
